@@ -5,6 +5,7 @@ import (
 	"github.com/davecgh/go-spew/spew"
 	"github.com/songtianyi/rrframework/logs"
 	"github.com/songtianyi/wechat-go/wxweb"
+	"runtime"
 )
 
 type wechat struct {
@@ -40,7 +41,13 @@ func afterLoginHandler() error {
 
 func main() {
 	var err error
-	wx.session, err = wxweb.CreateSession(nil, nil, wxweb.TERMINAL_MODE)
+
+	if runtime.GOOS == "windows" {
+		wx.session, err = wxweb.CreateWebSessionWithPath(nil, nil, "./")
+	} else {
+		wx.session, err = wxweb.CreateSession(nil, nil, wxweb.TERMINAL_MODE_GOLAND)
+	}
+
 	if err != nil {
 		logs.Error(err)
 		return
