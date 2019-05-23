@@ -43,9 +43,9 @@ func main() {
 	var err error
 
 	if runtime.GOOS == "windows" {
-		wx.session, err = wxweb.CreateWebSessionWithPath(nil, nil, "./")
+		wx.session, err = wxweb.CreateSession(nil, nil, wxweb.WEB_MODE)
 	} else {
-		wx.session, err = wxweb.CreateSession(nil, nil, wxweb.TERMINAL_MODE_GOLAND)
+		wx.session, err = wxweb.CreateSession(nil, nil, wxweb.TERMINAL_MODE)
 	}
 
 	if err != nil {
