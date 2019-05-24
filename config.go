@@ -1,7 +1,6 @@
 package main
 
 import (
-	"github.com/davecgh/go-spew/spew"
 	"io/ioutil"
 	"strings"
 )
@@ -28,7 +27,6 @@ func toLine(str string) (tables []string) {
 		tables = append(tables, v)
 	}
 
-	spew.Dump(tables)
 	return tables
 }
 

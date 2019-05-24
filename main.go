@@ -2,10 +2,10 @@ package main
 
 import (
 	"fmt"
-	"github.com/davecgh/go-spew/spew"
+	"runtime"
+
 	"github.com/songtianyi/rrframework/logs"
 	"github.com/songtianyi/wechat-go/wxweb"
-	"runtime"
 )
 
 type wechat struct {
@@ -31,8 +31,6 @@ func afterLoginHandler() error {
 		fmt.Println("Get user fail")
 		return fmt.Errorf("Invalid user")
 	}
-
-	spew.Dump(wx.users)
 
 	cronTable(opt.time)
 
